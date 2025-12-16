@@ -75,7 +75,9 @@ export const register=async (req,res)=>{
 }
 export const login=async (req,res)=>{
     try{
-    const {username,password}=req.body;
+        console.log("login called");
+        const {username,password}=req.body;
+        console.log(username,password);
     if(!username||!password){return res.status(400).json({message:"All fields are required"})};
     const user=await User.findOne({username});
     if(!user){return res.json({message:"please register first"})};
