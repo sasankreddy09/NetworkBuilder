@@ -1,0 +1,32 @@
+# POST http://localhost:8000/users/register HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "username":"sasank",
+#     "password":"sasank09",
+#     "email":"sasankreddyrajala09@gmail.com",
+#     "name":"sasankReddy"
+#  }
+# POST http://localhost:8000/users/login HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "username":"sasank",
+#     "password":"sasank09"
+# }
+
+
+# GET  http://localhost:8000/users/download_resume HTTP/1.1
+# Content-Type: application/json
+
+# {
+#     "token":"f6f07b351bc0b00f49af9f19e8e52be00ef83ea7814de534f7053be6472ff6c7"
+# }
+
+
+# GET  http://localhost:8000/users/download_resume?id=692d679dfee8a73bb57a14c6 HTTP/1.1
+# Content-Type: application/json
+
+# {
+
+# }
