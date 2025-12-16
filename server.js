@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("uploads"));
 const PORT = process.env.PORT || 8000;
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/myapp";
+const MONGO_URI = process.env.MONGO_URI;
 
 // Connect to MongoDB
 mongoose.connect(MONGO_URI)

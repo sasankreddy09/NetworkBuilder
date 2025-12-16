@@ -47,12 +47,17 @@ async function convertUserDataToPDF(userData){
 export const register=async (req,res)=>{
     try{
         const {name,email,username,password}=req.body;
-        const userfound=await User.findOne({
-            email
-        });
-        if(userfound){
-            return res.status(400).json({message:"user already exists"});
-        }
+        const existingUser = await User.findOne({
+      $or: [{ email }, { username }]
+    });
+
+    if (existingUser) {
+      if (existingUser.email === email) {
+        return res.status(400).json({ message: "Email already exists" });
+      } else if (existingUser.username === username) {
+        return res.status(400).json({ message: "Username already exists" });
+      }
+    }
         const hashedPassword=await bcrypt.hash(password,10);
         const user=await new User({
             name,
