@@ -77,8 +77,6 @@ export const login=async (req,res)=>{
     try{
         console.log("login called");
         const {username,password}=req.body;
-        console.log(username,password);
-        console.log(req.body);
     if(!username||!password){return res.status(400).json({message:"All fields are required"})};
     const user=await User.findOne({username});
     if(!user){return res.json({message:"please register first"})};
@@ -88,7 +86,7 @@ export const login=async (req,res)=>{
     }
     const token=crypto.randomBytes(32).toString("hex");
     await User.updateOne({_id: user._id}, { token });
-    return res.status(200).json({token:` ${token} `});
+    return res.status(200).json({token:`${token}`});
     }
     catch(err){
         return res.status(500).json({error:"There is a error occured"});
@@ -139,7 +137,7 @@ export const userUpdate=async (req,res)=>{
 }
 export const getUserAndProfile=async (req,res)=>{
     try{
-        const {token}=req.body;
+        const {token}=req.query;
         console.log(token);
         const user=await User.findOne({token:token});
         if(!user)return res.status(400).json({error:"User doesnt exists"});
